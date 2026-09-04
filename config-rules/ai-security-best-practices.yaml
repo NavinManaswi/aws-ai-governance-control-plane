@@ -1,0 +1,135 @@
+# AWS Config Conformance Pack: AI Security Best Practices
+# Based on AWS Security Hub CSPM AI Security Best Practices standard (31 automated controls)[reference:33]
+
+AWSTemplateFormatVersion: 2010-09-09
+Description: AI Security Best Practices Conformance Pack
+
+Parameters:
+  RemediationRoleArn:
+    Type: String
+    Description: ARN of the IAM role for remediation
+
+Resources:
+  # ============================================================================
+  # Encryption Controls
+  # ============================================================================
+
+  SageMakerNotebookEncryptionRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: sagemaker-notebook-encryption-enabled
+      Description: SageMaker notebook instances must have encryption enabled
+      Source:
+        Owner: AWS
+        SourceIdentifier: SAGEMAKER_NOTEBOOK_ENCRYPTION_ENABLED
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  SageMakerEndpointEncryptionRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: sagemaker-endpoint-encryption-enabled
+      Description: SageMaker endpoints must have encryption enabled
+      Source:
+        Owner: AWS
+        SourceIdentifier: SAGEMAKER_ENDPOINT_ENCRYPTION_ENABLED
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  # ============================================================================
+  # Network Controls
+  # ============================================================================
+
+  SageMakerNotebookVpcRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: sagemaker-notebook-in-vpc
+      Description: SageMaker notebook instances must be deployed within VPC
+      Source:
+        Owner: AWS
+        SourceIdentifier: SAGEMAKER_NOTEBOOK_IN_VPC
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  SageMakerEndpointVpcRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: sagemaker-endpoint-in-vpc
+      Description: SageMaker endpoints must be deployed within VPC
+      Source:
+        Owner: AWS
+        SourceIdentifier: SAGEMAKER_ENDPOINT_IN_VPC
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  # ============================================================================
+  # Access Controls
+  # ============================================================================
+
+  SageMakerPublicAccessRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: sagemaker-notebook-public-access-disabled
+      Description: SageMaker notebook instances must not have public access
+      Source:
+        Owner: AWS
+        SourceIdentifier: SAGEMAKER_NOTEBOOK_PUBLIC_ACCESS_DISABLED
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  # ============================================================================
+  # Monitoring Controls
+  # ============================================================================
+
+  SageMakerModelMonitoringRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: sagemaker-model-monitoring-enabled
+      Description: SageMaker model monitoring must be enabled
+      Source:
+        Owner: AWS
+        SourceIdentifier: SAGEMAKER_MODEL_MONITORING_ENABLED
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  # ============================================================================
+  # Bedrock Controls
+  # ============================================================================
+
+  BedrockGuardrailsRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: bedrock-guardrails-enabled
+      Description: Bedrock Guardrails must be enabled
+      Source:
+        Owner: AWS
+        SourceIdentifier: BEDROCK_GUARDRAILS_ENABLED
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  BedrockLoggingRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: bedrock-logging-enabled
+      Description: Bedrock logging must be enabled
+      Source:
+        Owner: AWS
+        SourceIdentifier: BEDROCK_LOGGING_ENABLED
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  # ============================================================================
+  # AgentCore Controls
+  # ============================================================================
+
+  AgentCoreIdentityRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: agentcore-identity-configured
+      Description: AgentCore agents must have identity configured
+      Source:
+        Owner: AWS
+        SourceIdentifier: AGENTCORE_IDENTITY_CONFIGURED
+      MaximumExecutionFrequency: TwentyFour_Hours
+
+  AgentCorePermissionsRule:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: agentcore-permissions-defined
+      Description: AgentCore agents must have fine-grained permissions defined
+      Source:
+        Owner: AWS
+        SourceIdentifier: AGENTCORE_PERMISSIONS_DEFINED
+      MaximumExecutionFrequency: TwentyFour_Hours
