@@ -1,3 +1,4 @@
+Fuser
 # 🛡️ AWS AI Governance Control Plane
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -252,9 +253,9 @@ aws config put-conformance-pack \
 
 📫 Contact
 Channel	Details
-GitHub	github.com/yourusername
-LinkedIn	linkedin.com/in/yourprofile
-Email	your.email@domain.com
+GitHub	github.com/NavinManaswi
+LinkedIn	linkedin.com/in/NavinManaswi
+Email	manaswink@gmail.com
 📝 License
 This project is licensed under the MIT License.
 
